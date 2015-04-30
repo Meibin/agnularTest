@@ -21,7 +21,7 @@ var app = angular.module('adrian', modules)
                 templateUrl: 'perfil.html',
                 controller: 'PerfilController'
               });
-          $locationProvider.html5Mode(true);
+          $locationProvider.html5Mode(false);
       }]
 );
 
