@@ -6,6 +6,7 @@
         <script src="./angular/angular.min.js"></script>
         <script src="./angular/angular-animate.min.js"></script>
         <script src="./angular/angular-route.min.js"></script>
+        <script src="session.js"></script>
         <script src="app.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css" />
     </head>
@@ -42,7 +43,9 @@
         </script>
 
         <script type="text/ng-template" id="amigos.html">
+            {{cookie}}
             {{amigos}}
+            <div><button ng-click="mostrar()">Mostrar</button></div>
         </script>
 
     </body>

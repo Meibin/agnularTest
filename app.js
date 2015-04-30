@@ -2,7 +2,8 @@
 
 var modules = [
     'ngRoute',
-    'ngAnimate'
+    'ngAnimate',
+    'session'
 ];
 
 var app = angular.module('adrian', modules)
@@ -43,51 +44,28 @@ app.controller('InicioController', ['$scope', '$location', function($scope, $loc
 
 }]);
 
-app.controller('PerfilController',['$scope', '$location', '$http', function($scope, $location, $http) {
+app.controller('PerfilController',['$scope', '$location', '$http','sessionFactory', function($scope, $location, $http,sessionFactory) {
     $scope.datalogin = {
         usuario: "",
         pass: ""
     }
 
     $scope.enviar = function() {
-        var promesa = $http.post('http://testing.singlesgalicia.es/api/auth/generate_auth_cookie/?username='+$scope.datalogin.usuario+'&password='+$scope.datalogin.pass, $scope.datalogin);
-
-        promesa.success(function(data, status, heads, config) {
-            $scope.cokie = data;
-        });
-
-        promesa.error(function(data, status, heads, config) {
-            $scope.cokie = data;
-
-        });
+      sessionFactory.login($scope.datalogin, $http);
     }
-
-    /*$scope.$watch('datalogin', function(newg, old) {
-        $scope.usuario = newg;
-    });*/
 
 }]);
 
-app.controller('AmigosController', ['$scope', '$location', '$http', function($scope, $location, $http) {
+app.controller('AmigosController', ['$scope', '$location', '$http', 'sessionFactory', function($scope, $location, $http, sessionFactory) {
 
-  $scope.usuarios = [];
+  sessionFactory.getAmigos($http);
 
-  $scope.anhadir = function() {
-      $scope.usuarios.push({
-          user: $scope.datalogin.usuario,
-          pass: $scope.datalogin.pass
-      });
+  $scope.cookie = sessionFactory.getCookie();
 
-      $scope.datalogin.usuario = "";
-      $scope.datalogin.pass = "";
+  $scope.mostrar = function() {
+    $scope.amigos = sessionFactory.amigos();
   }
-  var promesa = $http.post('http://testing.singlesgalicia.es/api/buddypressread/friends_get_friendship_request/?username=jnesta', $scope.datalogin);
 
-  promesa.success(function(data, status, heads, config) {
-      $scope.amigos = data;
-  });
 
-  promesa.error(function(data, status, heads, config) {
 
-  });
 }]);
