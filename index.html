@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="adrian">
+    <head>
+        <base href="/">
+        <script src="angular/angular.min.js"></script>
+        <script src="angular/angular-animate.min.js"></script>
+        <script src="angular/angular-route.min.js"></script>
+        <script src="app.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
+    <body>
+        <div class="menu-lateral" ng-controller="menu">
+            <ul>
+                <li><a href="/Inicio">Inicio</a></li>
+                <li><a href="/Perfil">Perfil</a></li>
+            </ul>
+        </div>
+        <div class="body" ng-controller="Main">
+            <div ng-view class="view-animate"></div>
+        </div>
+
+        <script type="text/ng-template" id="inicio.html">
+            Inicio
+        </script>
+
+        <script type="text/ng-template" id="perfil.html">
+            <form>
+                <div>Usuario: {{ datalogin.usuario }}</div>
+                <input type="text" ng-model="datalogin.usuario" name="usuario" ng-init="datalogin.usuario = 'Adria'"></input>
+                <div>Contraseña:</div>
+                <input type="password" ng-model="datalogin.pass" name="pass" ng-focus="alert('hola')"></input>
+                <button ng-click="anhadir()">Enviar</button>
+                <ng-ticket ng-model="aptitudes">
+            </form>
+            <div ng-if="usuarios.length > 0">
+                <ol>
+                    <li ng-repeat="obj in usuarios">
+                        Usuario ({{ obj.user }}) Contraseña ({{ obj.pass }})
+                    </li>
+                </ol>
+            </div>
+        </script>
+    </body>
+</html>
