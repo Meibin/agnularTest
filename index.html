@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <html ng-app="adrian">
     <head>
         <base href="./">
@@ -14,6 +15,7 @@
                 <li><a href="./#/">Re</a></li>
                 <li><a href="./#/inicio">Inicio</a></li>
                 <li><a href="./#/perfil">Perfil</a></li>
+                <li><a href="./#/amigos">Amigos</a></li>
             </ul>
         </div>
         <div class="body" ng-controller="Main">
@@ -30,20 +32,18 @@
 
         <script type="text/ng-template" id="perfil.html">
             <form>
-                <div>Usuario: {{ datalogin.usuario }}</div>
-                <input type="text" ng-model="datalogin.usuario" name="usuario" ng-init="datalogin.usuario = 'Adria'"></input>
+                <div>Usuario</div>
+                <input type="text" ng-model="datalogin.usuario" name="usuario" ng-init="datalogin.usuario = 'jnesta'"></input>
                 <div>Contraseña:</div>
-                <input type="password" ng-model="datalogin.pass" name="pass" ng-focus="alert('hola')"></input>
-                <button ng-click="anhadir()">Enviar</button>
+                <input type="password" ng-model="datalogin.pass" name="pass"></input>
+                <button ng-click="enviar()">Enviar</button>
                 <ng-ticket ng-model="aptitudes">
             </form>
-            <div>
-                <ol>
-                    <li ng-repeat="obj in usuarios">
-                        Usuario ({{ obj.user }}) Contraseña ({{ obj.pass }})
-                    </li>
-                </ol>
-            </div>
         </script>
+
+        <script type="text/ng-template" id="amigos.html">
+            {{amigos}}
+        </script>
+
     </body>
 </html>
