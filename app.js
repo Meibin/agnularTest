@@ -8,17 +8,15 @@ var modules = [
 var app = angular.module('adrian', modules)
     .config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider) {
-
         $routeProvider
-            .when('/Inicio', {
+            .when('/inicio', {
                 templateUrl: 'inicio.html',
                 controller: 'InicioController'
               })
-              .when('/Perfil', {
+              .when('/perfil', {
                 templateUrl: 'perfil.html',
                 controller: 'PerfilController'
               });
-
           $locationProvider.html5Mode(true);
       }]
 );
@@ -35,7 +33,8 @@ app.controller('InicioController', ['$scope', '$location', function($scope, $loc
 
 }]);
 
-app.controller('PerfilController', ['$scope', '$location', '$http', function($scope, $location, $http) {
+app.controller('PerfilController',['$scope', '$location', '$http', function($scope, $location, $http) {
+    log("holaa");
     $scope.datalogin = {
         usuario: "",
         pass: ""
