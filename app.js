@@ -9,6 +9,10 @@ var app = angular.module('adrian', modules)
     .config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider) {
         $routeProvider
+            .when('/', {
+                templateUrl: 'main.html',
+                controller: 'MainController'
+            })
             .when('/inicio', {
                 templateUrl: 'inicio.html',
                 controller: 'InicioController'
@@ -25,8 +29,11 @@ app.controller('menu', ['$scope', '$location', function($scope, $location) {
 
 }]);
 
-app.controller('Main', [
-    function() {
+app.controller('Main', [ function() {
+}]);
+
+app.controller('MainController', ['$scope', '$location', function($scope, $location) {
+
 }]);
 
 app.controller('InicioController', ['$scope', '$location', function($scope, $location) {
@@ -34,7 +41,7 @@ app.controller('InicioController', ['$scope', '$location', function($scope, $loc
 }]);
 
 app.controller('PerfilController',['$scope', '$location', '$http', function($scope, $location, $http) {
-    log("holaa");
+    console.log("holaa");
     $scope.datalogin = {
         usuario: "",
         pass: ""

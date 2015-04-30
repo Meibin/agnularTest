@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="adrian">
     <head>
-        <base href=".">
+        <base href="/">
         <script src="angular/angular.min.js"></script>
         <script src="angular/angular-animate.min.js"></script>
         <script src="angular/angular-route.min.js"></script>
@@ -11,14 +11,18 @@
     <body>
         <div class="menu-lateral" ng-controller="menu">
             <ul>
-              <li><a href=".">Re</a></li>
-                <li><a href="./inicio">Inicio</a></li>
-                <li><a href="./perfil">Perfil</a></li>
+                <li><a href="/">Re</a></li>
+                <li><a href="/inicio">Inicio</a></li>
+                <li><a href="/perfil">Perfil</a></li>
             </ul>
         </div>
         <div class="body" ng-controller="Main">
             <div ng-view class="view-animate"></div>
         </div>
+
+        <script type="text/ng-template" id="main.html">
+            Root
+        </script>
 
         <script type="text/ng-template" id="inicio.html">
             Inicio
@@ -33,7 +37,7 @@
                 <button ng-click="anhadir()">Enviar</button>
                 <ng-ticket ng-model="aptitudes">
             </form>
-            <div ng-if="usuarios.length > 0">
+            <div>
                 <ol>
                     <li ng-repeat="obj in usuarios">
                         Usuario ({{ obj.user }}) Contraseña ({{ obj.pass }})
