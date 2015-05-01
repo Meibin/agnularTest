@@ -3,6 +3,7 @@
 <html ng-app="adrian">
     <head>
         <base href="./">
+		<script src="phonegap.js"></script>
         <script src="./angular/angular.min.js"></script>
         <script src="./angular/angular-animate.min.js"></script>
         <script src="./angular/angular-route.min.js"></script>
@@ -13,10 +14,10 @@
     <body>
         <div class="menu-lateral" ng-controller="menu">
             <ul>
-                <li><a href="./#/">Re</a></li>
-                <li><a href="./#/inicio">Inicio</a></li>
-                <li><a href="./#/perfil">Perfil</a></li>
-                <li><a href="./#/amigos">Amigos</a></li>
+                <li><a href="./">Re</a></li>
+                <li><a href="./inicio">Inicio</a></li>
+                <li><a href="./perfil">Perfil</a></li>
+                <li><a href="./amigos">Amigos</a></li>
             </ul>
         </div>
         <div class="body" ng-controller="Main">
