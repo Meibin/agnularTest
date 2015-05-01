@@ -44,28 +44,25 @@ app.controller('InicioController', ['$scope', '$location', function($scope, $loc
 
 }]);
 
-app.controller('PerfilController',['$scope', '$location', '$http','sessionFactory', function($scope, $location, $http,sessionFactory) {
+app.controller('PerfilController',['$scope', '$location', 'sessionFactory', function($scope, $location, sessionFactory) {
     $scope.datalogin = {
         usuario: "",
         pass: ""
-    }
+    };
 
     $scope.enviar = function() {
-      sessionFactory.login($scope.datalogin, $http);
-    }
+        $scope.cookie = 'undefined';
+        sessionFactory.login($scope.datalogin).then(function(data) {
+            $scope.cookie = data;
+        });
+    };
 
 }]);
 
 app.controller('AmigosController', ['$scope', '$location', '$http', 'sessionFactory', function($scope, $location, $http, sessionFactory) {
 
-  sessionFactory.getAmigos($http);
-
-  $scope.cookie = sessionFactory.getCookie();
-
-  $scope.mostrar = function() {
-    $scope.amigos = sessionFactory.amigos();
-  }
-
-
+  sessionFactory.getAmigos($scope.datalogin).then(function(data) {
+      $scope.amigos = data;
+  });
 
 }]);
